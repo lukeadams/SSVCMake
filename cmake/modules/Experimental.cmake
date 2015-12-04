@@ -436,3 +436,5 @@ macro(vrm_cmake_find_extlib extlib)
     vrm_cmake_find_extlib_in(${extlib} "..")
 #}
 endmacro()
+
+# TODO: add sanitization options
