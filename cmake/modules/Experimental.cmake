@@ -373,6 +373,7 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("HAS_WNO_OLD_STYLE_CAST"                "-Wno-old-style-cast")
     vrm_cmake_add_compiler_flag("HAS_WNO_UNUSED_MACROS"                 "-Wno-unused-macros")
     vrm_cmake_add_compiler_flag("HAS_WNO_CLASS_VARARGS"                 "-Wno-class-varargs")
+    vrm_cmake_add_compiler_flag("HAS_WNO_PADDED"                        "-Wno-padded")
 
 #}
 endmacro()
