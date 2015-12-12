@@ -375,6 +375,7 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("HAS_WNO_CLASS_VARARGS"                 "-Wno-class-varargs")
     vrm_cmake_add_compiler_flag("HAS_WNO_PADDED"                        "-Wno-padded")
     vrm_cmake_add_compiler_flag("HAS_WNO_WEAK_VTABLES"                  "-Wno-weak-vtables")
+    vrm_cmake_add_compiler_flag("HAS_WNO_DATE_TIME"                     "-Wno-date-time")
 #}
 endmacro()
 
