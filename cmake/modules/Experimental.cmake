@@ -362,6 +362,10 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag(HAS_WNO_CPP98_COMPAT                  -Wno-c++98-compat)
     vrm_cmake_add_compiler_flag(HAS_WNO_CPP98_COMPAT_PEDANTIC         -Wno-c++98-compat-pedantic)
     vrm_cmake_add_compiler_flag(HAS_WNO_MISSING_PROTOTYPES            -Wno-missing-prototypes)
+    vrm_cmake_add_compiler_flag(HAS_WNO_NEWLINE_EOF                   -Wno-newline-eof)
+    vrm_cmake_add_compiler_flag(HAS_WNO_RESERVED_ID_MACRO             -Wno-reserved-id-macro)
+    vrm_cmake_add_compiler_flag(HAS_WNO_EXIT_TIME_DESTRUCTORS         -Wno-exit-time-destructors)
+    vrm_cmake_add_compiler_flag(HAS_WNO_GLOBAL_CONSTRUCTORS           -Wno-global-constructors)
 #}
 endmacro()
 
