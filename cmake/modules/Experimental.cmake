@@ -376,6 +376,9 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("HAS_WNO_PADDED"                        "-Wno-padded")
     vrm_cmake_add_compiler_flag("HAS_WNO_WEAK_VTABLES"                  "-Wno-weak-vtables")
     vrm_cmake_add_compiler_flag("HAS_WNO_DATE_TIME"                     "-Wno-date-time")
+    vrm_cmake_add_compiler_flag("HAS_WNO_UNNEEDED_MEMBER_FUNCTION"      "-Wno-unneeded-member-function")
+    vrm_cmake_add_compiler_flag("HAS_WNO_COVERED_SWITCH_DEFAULT"        "-Wno-covered-switch-default")
+    vrm_cmake_add_compiler_flag("HAS_WNO_RANGE_LOOP_ANALYSIS"           "-Wno-range-loop-analysis")
 #}
 endmacro()
 
