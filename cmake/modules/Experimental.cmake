@@ -366,6 +366,8 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag(HAS_WNO_RESERVED_ID_MACRO             -Wno-reserved-id-macro)
     vrm_cmake_add_compiler_flag(HAS_WNO_EXIT_TIME_DESTRUCTORS         -Wno-exit-time-destructors)
     vrm_cmake_add_compiler_flag(HAS_WNO_GLOBAL_CONSTRUCTORS           -Wno-global-constructors)
+    vrm_cmake_add_compiler_flag(HAS_WNO_MISSING_VARIABLE_DECLARATIONS -Wno-missing-variable-declarations)
+    vrm_cmake_add_compiler_flag(HAS_WNO_HEADER_HYGIENE                -Wno-header-hygiene)
 #}
 endmacro()
 
