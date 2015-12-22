@@ -270,7 +270,7 @@ macro(vrm_cmake_generate_public_header_tests header_list inc_dir)
 endmacro()
 
 # Generate unit tests.
-macro(vrm_cmake_generate_unit_tests test_srcs)
+macro(vrm_cmake_generate_unit_tests test_srcs linked_libraries)
 #{
     vrm_cmake_message("generating unit tests")
 
@@ -284,6 +284,7 @@ macro(vrm_cmake_generate_unit_tests test_srcs)
 
         add_executable(${_target} EXCLUDE_FROM_ALL "${_file}")
         vrm_cmake_add_unit_test(${_target} ${CMAKE_CURRENT_BINARY_DIR}/${_target})
+        target_link_libraries(${_target} linked_libraries)
 
         # Append generated targets        
         list(APPEND vrm_cmake_out ${_target})
@@ -293,7 +294,7 @@ macro(vrm_cmake_generate_unit_tests test_srcs)
 endmacro()
 
 # Generate unit tests.
-macro(vrm_cmake_generate_unit_tests_glob glob_pattern)
+macro(vrm_cmake_generate_unit_tests_glob glob_pattern linked_libraries)
 #{
     vrm_cmake_message("globbing unit tests")
 
@@ -301,7 +302,7 @@ macro(vrm_cmake_generate_unit_tests_glob glob_pattern)
     file(GLOB_RECURSE _srcs ${glob_pattern})
 
     # Add all the unit tests.
-    vrm_cmake_generate_unit_tests(_srcs)
+    vrm_cmake_generate_unit_tests(_srcs linked_libraries)
 #}
 endmacro()
 
