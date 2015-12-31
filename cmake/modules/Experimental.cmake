@@ -380,6 +380,7 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("HAS_WNO_UNNEEDED_MEMBER_FUNCTION"      "-Wno-unneeded-member-function")
     vrm_cmake_add_compiler_flag("HAS_WNO_COVERED_SWITCH_DEFAULT"        "-Wno-covered-switch-default")
     vrm_cmake_add_compiler_flag("HAS_WNO_RANGE_LOOP_ANALYSIS"           "-Wno-range-loop-analysis")
+    vrm_cmake_add_compiler_flag("HAS_WNO_UNUSED_MEMBER_FUNCTION"        "-Wno-unused-member-function")
 
     # TODO: consider -Wsuggest-final-types and -Wsuggest-final-methods
 #}
