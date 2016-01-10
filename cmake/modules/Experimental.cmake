@@ -83,8 +83,8 @@ endmacro()
 # The flag is enabled, if possible.
 macro(vrm_cmake_add_compiler_flag testname flag)
 #{
-    string(REPLACE "-" "_" replace_0 flag)
-    string(REPLACE "+" "X" replace_1 replace_0)
+    string(REPLACE "-" "_" replace_0 "${flag}")
+    string(REPLACE "+" "X" replace_1 "${replace_0}")
 
     vrm_cmake_message("${replace_1}")
 
