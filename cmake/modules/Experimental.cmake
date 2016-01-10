@@ -81,16 +81,15 @@ endmacro()
 
 # Creates `testname` variable that checks for compiler flag `flag`.
 # The flag is enabled, if possible.
-macro(vrm_cmake_add_compiler_flag testname flag)
+macro(vrm_cmake_add_compiler_flag flag)
 #{
     string(SUBSTRING ${flag} 1 -1 flag_0)
     string(TOUPPER ${flag_0} flag_1)
     string(REPLACE "-" "_" flag_2 ${flag_1})
     string(REPLACE "+" "X" flag_3 ${flag_2})
+    string(REPLACE "=" "" flag_4 ${flag_3})
 
-    vrm_cmake_message(${flag_3})
-
-    set(PROJECT_TESTNAME "${PROJECT_NAME_UPPER}_${testname}")
+    set(PROJECT_TESTNAME "${PROJECT_NAME_UPPER}_HAS_${flag_4}")
 
     vrm_cmake_init_compiler_flag_check()
     check_cxx_compiler_flag(${flag} ${PROJECT_TESTNAME})
@@ -185,7 +184,7 @@ macro(vrm_cmake_add_option_no_exceptions)
     #{
         vrm_cmake_message("exceptions disabled")
 
-        vrm_cmake_add_compiler_flag(HAS_FNO_EXCEPTIONS -fno-exceptions)
+        vrm_cmake_add_compiler_flag("-fno-exceptions")
     #}
     endif()
 #}
@@ -200,8 +199,8 @@ macro(vrm_cmake_add_option_werror)
     #{
         vrm_cmake_message("werror enabled")
 
-        vrm_cmake_add_compiler_flag(HAS_WERROR -Werror)
-        vrm_cmake_add_compiler_flag(HAS_WX -WX)
+        vrm_cmake_add_compiler_flag("-Werror")
+        vrm_cmake_add_compiler_flag("-WX")
     #}
     endif()
 #}
@@ -332,7 +331,7 @@ macro(vrm_cmake_add_compiler_flag_pthread)
 #{
     vrm_cmake_message("added common pthread flags")
 
-    vrm_cmake_add_compiler_flag(HAS_PTHREAD                           -pthread)
+    vrm_cmake_add_compiler_flag("-pthread")
 #}
 endmacro()
 
@@ -350,46 +349,45 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
 #{
     vrm_cmake_message("added common safety flags")
 
-    vrm_cmake_add_compiler_flag("HAS_PEDANTIC"                          "-pedantic")
-    vrm_cmake_add_compiler_flag("HAS_STDCXX14"                          "-std=c++14")
-    vrm_cmake_add_compiler_flag("HAS_W"                                 "-W")
-    vrm_cmake_add_compiler_flag("HAS_WALL"                              "-Wall")
-    vrm_cmake_add_compiler_flag("HAS_WEXTRA"                            "-Wextra")
-    vrm_cmake_add_compiler_flag("HAS_WNO_UNUSED_LOCAL_TYPEDEFS"         "-Wno-unused-local-typedefs")
-    vrm_cmake_add_compiler_flag("HAS_WWRITE_STRINGS"                    "-Wwrite-strings")
-    vrm_cmake_add_compiler_flag("HAS_WSHADOW"                           "-Wshadow")
-    vrm_cmake_add_compiler_flag("HAS_WUNDEF"                            "-Wundef")
-    vrm_cmake_add_compiler_flag("HAS_WNO_MISSING_FIELD_INITIALIZERS"    "-Wno-missing-field-initializers")
-    vrm_cmake_add_compiler_flag("HAS_WPOINTER_ARITH"                    "-Wpointer-arith")
-    vrm_cmake_add_compiler_flag("HAS_WCAST_ALIGN"                       "-Wcast-align")
-    vrm_cmake_add_compiler_flag("HAS_WNO_UNREACHABLE_CODE"              "-Wno-unreachable-code")
-    vrm_cmake_add_compiler_flag("HAS_WNON_VIRTUAL_DTOR"                 "-Wnon-virtual-dtor")
-    vrm_cmake_add_compiler_flag("HAS_WOVERLOADED_VIRTUAL"               "-Woverloaded-virtual")
-    vrm_cmake_add_compiler_flag("HAS_WMISLEADING_INDENTATION"           "-Wmisleading-indentation")
-    vrm_cmake_add_compiler_flag("HAS_WDUPLICATED_COND"                  "-Wduplicated-cond")
-
-    vrm_cmake_add_compiler_flag("HAS_WEVERYTHING"                       "-Weverything")
-    vrm_cmake_add_compiler_flag("HAS_WNO_CPP98_COMPAT"                  "-Wno-c++98-compat")
-    vrm_cmake_add_compiler_flag("HAS_WNO_CPP98_COMPAT_PEDANTIC"         "-Wno-c++98-compat-pedantic")
-    vrm_cmake_add_compiler_flag("HAS_WNO_MISSING_PROTOTYPES"            "-Wno-missing-prototypes")
-    vrm_cmake_add_compiler_flag("HAS_WNO_NEWLINE_EOF"                   "-Wno-newline-eof")
-    vrm_cmake_add_compiler_flag("HAS_WNO_RESERVED_ID_MACRO"             "-Wno-reserved-id-macro")
-    vrm_cmake_add_compiler_flag("HAS_WNO_EXIT_TIME_DESTRUCTORS"         "-Wno-exit-time-destructors")
-    vrm_cmake_add_compiler_flag("HAS_WNO_GLOBAL_CONSTRUCTORS"           "-Wno-global-constructors")
-    vrm_cmake_add_compiler_flag("HAS_WNO_MISSING_VARIABLE_DECLARATIONS" "-Wno-missing-variable-declarations")
-    vrm_cmake_add_compiler_flag("HAS_WNO_HEADER_HYGIENE"                "-Wno-header-hygiene")
-    vrm_cmake_add_compiler_flag("HAS_WNO_CONVERSION"                    "-Wno-conversion")
-    vrm_cmake_add_compiler_flag("HAS_WNO_FLOAT-EQUAL"                   "-Wno-float-equal")
-    vrm_cmake_add_compiler_flag("HAS_WNO_OLD_STYLE_CAST"                "-Wno-old-style-cast")
-    vrm_cmake_add_compiler_flag("HAS_WNO_UNUSED_MACROS"                 "-Wno-unused-macros")
-    vrm_cmake_add_compiler_flag("HAS_WNO_CLASS_VARARGS"                 "-Wno-class-varargs")
-    vrm_cmake_add_compiler_flag("HAS_WNO_PADDED"                        "-Wno-padded")
-    vrm_cmake_add_compiler_flag("HAS_WNO_WEAK_VTABLES"                  "-Wno-weak-vtables")
-    vrm_cmake_add_compiler_flag("HAS_WNO_DATE_TIME"                     "-Wno-date-time")
-    vrm_cmake_add_compiler_flag("HAS_WNO_UNNEEDED_MEMBER_FUNCTION"      "-Wno-unneeded-member-function")
-    vrm_cmake_add_compiler_flag("HAS_WNO_COVERED_SWITCH_DEFAULT"        "-Wno-covered-switch-default")
-    vrm_cmake_add_compiler_flag("HAS_WNO_RANGE_LOOP_ANALYSIS"           "-Wno-range-loop-analysis")
-    vrm_cmake_add_compiler_flag("HAS_WNO_UNUSED_MEMBER_FUNCTION"        "-Wno-unused-member-function")
+    vrm_cmake_add_compiler_flag("-pedantic")
+    vrm_cmake_add_compiler_flag("-std=c++14")
+    vrm_cmake_add_compiler_flag("-W")
+    vrm_cmake_add_compiler_flag("-Wall")
+    vrm_cmake_add_compiler_flag("-Wextra")
+    vrm_cmake_add_compiler_flag("-Wno-unused-local-typedefs")
+    vrm_cmake_add_compiler_flag("-Wwrite-strings")
+    vrm_cmake_add_compiler_flag("-Wshadow")
+    vrm_cmake_add_compiler_flag("-Wundef")
+    vrm_cmake_add_compiler_flag("-Wno-missing-field-initializers")
+    vrm_cmake_add_compiler_flag("-Wpointer-arith")
+    vrm_cmake_add_compiler_flag("-Wcast-align")
+    vrm_cmake_add_compiler_flag("-Wno-unreachable-code")
+    vrm_cmake_add_compiler_flag("-Wnon-virtual-dtor")
+    vrm_cmake_add_compiler_flag("-Woverloaded-virtual")
+    vrm_cmake_add_compiler_flag("-Wmisleading-indentation")
+    vrm_cmake_add_compiler_flag("-Wduplicated-cond")
+    vrm_cmake_add_compiler_flag("-Weverything")
+    vrm_cmake_add_compiler_flag("-Wno-c++98-compat")
+    vrm_cmake_add_compiler_flag("-Wno-c++98-compat-pedantic")
+    vrm_cmake_add_compiler_flag("-Wno-missing-prototypes")
+    vrm_cmake_add_compiler_flag("-Wno-newline-eof")
+    vrm_cmake_add_compiler_flag("-Wno-reserved-id-macro")
+    vrm_cmake_add_compiler_flag("-Wno-exit-time-destructors")
+    vrm_cmake_add_compiler_flag("-Wno-global-constructors")
+    vrm_cmake_add_compiler_flag("-Wno-missing-variable-declarations")
+    vrm_cmake_add_compiler_flag("-Wno-header-hygiene")
+    vrm_cmake_add_compiler_flag("-Wno-conversion")
+    vrm_cmake_add_compiler_flag("-Wno-float-equal")
+    vrm_cmake_add_compiler_flag("-Wno-old-style-cast")
+    vrm_cmake_add_compiler_flag("-Wno-unused-macros")
+    vrm_cmake_add_compiler_flag("-Wno-class-varargs")
+    vrm_cmake_add_compiler_flag("-Wno-padded")
+    vrm_cmake_add_compiler_flag("-Wno-weak-vtables")
+    vrm_cmake_add_compiler_flag("-Wno-date-time")
+    vrm_cmake_add_compiler_flag("-Wno-unneeded-member-function")
+    vrm_cmake_add_compiler_flag("-Wno-covered-switch-default")
+    vrm_cmake_add_compiler_flag("-Wno-range-loop-analysis")
+    vrm_cmake_add_compiler_flag("-Wno-unused-member-function")
 
     # TODO: consider -Wsuggest-final-types and -Wsuggest-final-methods
 #}
@@ -400,8 +398,8 @@ macro(vrm_cmake_add_common_compiler_flags_release)
 #{
     vrm_cmake_message("added common release flags")
 
-    vrm_cmake_add_compiler_flag(HAS_OFAST                             -Ofast)
-    vrm_cmake_add_compiler_flag(HAS_FFAST_MATH                        -ffast-math)
+    vrm_cmake_add_compiler_flag("-Ofast")
+    vrm_cmake_add_compiler_flag("-ffast-math")
 
     add_definitions(-DNDEBUG -DSSVUT_DISABLE -DSSVU_ASSERT_FORCE_OFF=1)
 #}
@@ -412,8 +410,8 @@ macro(vrm_cmake_add_common_compiler_flags_debug)
 #{
     vrm_cmake_message("added common debug flags")
 
-    vrm_cmake_add_compiler_flag(HAS_F_NO_OMIT_FRAME_POINTER           -fno-omit-frame-pointer)
-    vrm_cmake_add_compiler_flag(HAS_G3                                -g3)
+    vrm_cmake_add_compiler_flag("-fno-omit-frame-pointer")
+    vrm_cmake_add_compiler_flag("-g3")
 #}
 endmacro()
 
