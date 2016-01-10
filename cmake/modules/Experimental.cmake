@@ -58,11 +58,7 @@ endmacro()
 # Includes a CMake module only once.
 macro(vrm_cmake_include_once module flag)
 #{
-    if(${flag})
-    #{
-
-    #}
-    else()
+    if(NOT ${flag})
     #{
         include(${module})
         set(${flag} true)
@@ -83,6 +79,7 @@ endmacro()
 # The flag is enabled, if possible.
 macro(vrm_cmake_add_compiler_flag flag)
 #{
+    # Compute flag testname
     string(SUBSTRING ${flag} 1 -1 flag_0)
     string(TOUPPER ${flag_0} flag_1)
     string(REPLACE "-" "_" flag_2 ${flag_1})
