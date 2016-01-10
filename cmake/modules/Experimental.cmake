@@ -84,11 +84,11 @@ endmacro()
 macro(vrm_cmake_add_compiler_flag testname flag)
 #{
     string(SUBSTRING ${flag} 1 -1 flag_0)
-    string(TOUPPER ${flag} flag)
-    string(REPLACE "-" "_" flag ${flag})
-    string(REPLACE "+" "X" flag ${flag})
+    string(TOUPPER ${flag_0} flag_1)
+    string(REPLACE "-" "_" flag_2 ${flag_1})
+    string(REPLACE "+" "X" flag_3 ${flag_2})
 
-    vrm_cmake_message(${flag_0})
+    vrm_cmake_message(${flag_3})
 
     set(PROJECT_TESTNAME "${PROJECT_NAME_UPPER}_${testname}")
 
