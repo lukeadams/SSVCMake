@@ -83,6 +83,11 @@ endmacro()
 # The flag is enabled, if possible.
 macro(vrm_cmake_add_compiler_flag testname flag)
 #{
+    string(REPLACE "-" "_" replace_0 flag)
+    string(REPLACE "+" "X" replace_1 replace_0)
+
+    vrm_cmake_message(replace_1)
+
     set(PROJECT_TESTNAME "${PROJECT_NAME_UPPER}_${testname}")
 
     vrm_cmake_init_compiler_flag_check()
@@ -358,6 +363,8 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("HAS_WNO_UNREACHABLE_CODE"              "-Wno-unreachable-code")
     vrm_cmake_add_compiler_flag("HAS_WNON_VIRTUAL_DTOR"                 "-Wnon-virtual-dtor")
     vrm_cmake_add_compiler_flag("HAS_WOVERLOADED_VIRTUAL"               "-Woverloaded-virtual")
+    vrm_cmake_add_compiler_flag("HAS_WMISLEADING_INDENTATION"           "-Wmisleading-indentation")
+    vrm_cmake_add_compiler_flag("HAS_WDUPLICATED_COND"                  "-Wduplicated-cond")
 
     vrm_cmake_add_compiler_flag("HAS_WEVERYTHING"                       "-Weverything")
     vrm_cmake_add_compiler_flag("HAS_WNO_CPP98_COMPAT"                  "-Wno-c++98-compat")
