@@ -367,9 +367,14 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("-Wmisleading-indentation")
     vrm_cmake_add_compiler_flag("-Wduplicated-cond")
     vrm_cmake_add_compiler_flag("-Weverything")
-
     vrm_cmake_add_compiler_flag("-Wsuggest-final-types")
     vrm_cmake_add_compiler_flag("-Wsuggest-final-methods")
+    vrm_cmake_add_compiler_flag("-Wsuggest-override")
+    vrm_cmake_add_compiler_flag("-Wsuggest-attribute=pure")
+    vrm_cmake_add_compiler_flag("-Wsuggest-attribute=const")
+    vrm_cmake_add_compiler_flag("-Wsuggest-attribute=noreturn")
+    vrm_cmake_add_compiler_flag("-Wsuggest-attribute=format")
+    vrm_cmake_add_compiler_flag("-Wsequence-point")
 
     # Disable warnings
     vrm_cmake_add_compiler_flag("-Wno-c++98-compat")
@@ -393,8 +398,6 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("-Wno-covered-switch-default")
     vrm_cmake_add_compiler_flag("-Wno-range-loop-analysis")
     vrm_cmake_add_compiler_flag("-Wno-unused-member-function")
-
-    # TODO: consider -Wsuggest-final-types and -Wsuggest-final-methods
 #}
 endmacro()
 
