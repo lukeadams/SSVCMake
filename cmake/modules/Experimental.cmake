@@ -346,8 +346,11 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
 #{
     vrm_cmake_message("added common safety flags")
 
+    # Enable common flags
     vrm_cmake_add_compiler_flag("-pedantic")
     vrm_cmake_add_compiler_flag("-std=c++14")
+
+    # Enable warnings
     vrm_cmake_add_compiler_flag("-W")
     vrm_cmake_add_compiler_flag("-Wall")
     vrm_cmake_add_compiler_flag("-Wextra")
@@ -364,6 +367,11 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("-Wmisleading-indentation")
     vrm_cmake_add_compiler_flag("-Wduplicated-cond")
     vrm_cmake_add_compiler_flag("-Weverything")
+
+    vrm_cmake_add_compiler_flag("-Wsuggest-final-types")
+    vrm_cmake_add_compiler_flag("-Wsuggest-final-methods")
+
+    # Disable warnings
     vrm_cmake_add_compiler_flag("-Wno-c++98-compat")
     vrm_cmake_add_compiler_flag("-Wno-c++98-compat-pedantic")
     vrm_cmake_add_compiler_flag("-Wno-missing-prototypes")
