@@ -375,6 +375,7 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("-Wsuggest-attribute=noreturn")
     vrm_cmake_add_compiler_flag("-Wsuggest-attribute=format")
     vrm_cmake_add_compiler_flag("-Wsequence-point")
+    vrm_cmake_add_compiler_flag("-Winline")
 
     # Disable warnings
     vrm_cmake_add_compiler_flag("-Wno-c++98-compat")
