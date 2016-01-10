@@ -399,6 +399,7 @@ macro(vrm_cmake_add_common_compiler_flags_safety)
     vrm_cmake_add_compiler_flag("-Wno-covered-switch-default")
     vrm_cmake_add_compiler_flag("-Wno-range-loop-analysis")
     vrm_cmake_add_compiler_flag("-Wno-unused-member-function")
+    vrm_cmake_add_compiler_flag("-Wno-switch-enum")
 #}
 endmacro()
 
