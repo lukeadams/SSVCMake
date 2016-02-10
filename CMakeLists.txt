@@ -29,6 +29,5 @@ endif()
 
 # Include CPM modules or externals here (with CPM_AddModule).
 
-CPM_InitModule(${CPM_MODULE_NAME})
-
 CPM_ExportAdditionalIncludeDir("./cmake/modules")
+CPM_InitModule(${CPM_MODULE_NAME})
