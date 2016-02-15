@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
-message("SSVCMake: included")
-
+if(${SSV_DEBUG_MESSAGES})
+	message(STATUS "SSVCMake: included")
+endif(${SSV_DEBUG_MESSAGES})
 include(Common)
 include(Experimental)

@@ -7,7 +7,9 @@
 # Message with vrm_cmake prefix.
 macro(vrm_cmake_message str)
 #{
-    message("[vrm_cmake] ${str}")
+    if(${SSV_DEBUG_MESSAGES})
+        message(STATUS "[vrm_cmake] ${str}")
+    endif(${SSV_DEBUG_MESSAGES})
 #}
 endmacro()
 
